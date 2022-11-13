@@ -71,14 +71,7 @@ function App() {
 
   const handleOnClick = (e) => {
     //chech for GAMEOVER
-    SelectedArray.forEach(item => {
-      // if card === item - game over
-      if (item === e.target.id) {
-        console.log('gameover')
-        setScore(0)
-        setSelectedArray([])
-      }
-    })
+    
     //save card in selected array
     setSelectedArray(current => [...current, e.target.id])
 
@@ -87,16 +80,26 @@ function App() {
 
     //score + 1
     setScore(score+1)
+    SelectedArray.forEach(item => {
+      // if card === item - game over
+      if (item === e.target.id) {
+        GAMEOVER()     
+      }
+    })
   }
 
   useEffect(() => {
     if (score > bestScore) {
       setBestScore(score)
-    }
+  }
+  
+  
   })
 
   const GAMEOVER = () => {
-    
+    console.log('gameover')
+    setScore(0)
+    setSelectedArray([])
   }
 
   const shuffle = (array) => {
@@ -119,15 +122,20 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Crypto memory game</h2>
-      <p>Score: {score}</p>
-      <p>Best score: {bestScore}</p>
-      <ul>{cardArray.map((card) => (
-        <li key={card.name} id={card.name} className="card" onClick={handleOnClick}>
+      <header>
+        <h2>Crypto memory game</h2>
+        <div className="rightside">
+          <p><b>Score: {score}</b></p>
+          <p><b>Best score: {bestScore}</b></p>
+        </div>
+      </header>
+      <div className='container'>{cardArray.map((card) => (
+        <div key={card.name} id={card.name} className="card" onClick={handleOnClick}>
           <p id={card.name}>{card.name}</p>
           <img src={card.img} id={card.name} className="logo" alt="it did no load :(" />
-        </li>
-      ))}</ul>
+        </div>
+      ))}</div>
+      <footer>Created by Thorben Egberink</footer>
     </div>
   )
 }

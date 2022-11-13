@@ -1,20 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('./assets/background.png');
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
 .logo {
     width: 100px;
     height: 100px;
 }
 
-ul {
+.container {
     list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    width: 80vw;
 }
 
 .card {
-    width: 200px;
-    height: 200px;
-    border: 1px black solid;
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rightside {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0 30px;
+    font-size: large;
+}
+
+h2 {
+    margin: 0 30px;
+    font-size: xx-large;
+}
+
+footer {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
 }
